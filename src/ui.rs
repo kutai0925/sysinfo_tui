@@ -34,19 +34,19 @@ pub fn draw_ui(f: &mut Frame, app: &App) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
         .constraints([
-            Constraint::Length(3), // header
-            Constraint::Min(0),    // content
-            Constraint::Length(2), // footer (2 lines, no borders)
+            Constraint::Length(3), 
+            Constraint::Min(0),    
+            Constraint::Length(2),
         ])
         .split(area);
 
-    // Header
+   
     let header = Paragraph::new("SYSINFO_TUI")
         .block(Block::default().borders(Borders::ALL))
         .alignment(Alignment::Center);
     f.render_widget(header, chunks[0]);
 
-    // Content
+    
     let content_text = match app.mode {
         ViewMode::Cpu => app.metrics.cpu_text(),
         ViewMode::Memory => app.metrics.mem_text(),
@@ -64,7 +64,7 @@ pub fn draw_ui(f: &mut Frame, app: &App) {
         .wrap(Wrap { trim: false });
     f.render_widget(content, chunks[1]);
 
-    // Footer split into 2 single lines
+ 
     let footer = Layout::default()
         .direction(Direction::Vertical)
         .constraints([Constraint::Length(1), Constraint::Length(1)])

@@ -74,7 +74,7 @@ impl Metrics {
     }
 
     pub fn mem_text(&self) -> String {
-        // values in KiB
+      
         let total = self.sys.total_memory();
         let used = self.sys.used_memory();
 
